@@ -57,11 +57,11 @@ GAMMA = 0.99 - discount factor
 The environment has been solved (mean score was higher than 0.5) in around 400 episodes.  
 ![mean score](result_common_memory.png)  
 
-First Actor's weights are stored in 'checkpoint_actor_id1.pth'
-First Critic's weights are stored in 'checkpoint_actor_id1.pth'  
+First Actor's weights are stored in 'checkpoint_actor_id0.pth'
+First Critic's weights are stored in 'checkpoint_actor_id0.pth'  
 
-Second Actor's weights are stored in 'checkpoint_actor_id2.pth'
-Second Critic's weights are stored in 'checkpoint_actor_id2.pth'  
+Second Actor's weights are stored in 'checkpoint_actor_id1.pth'
+Second Critic's weights are stored in 'checkpoint_actor_id1.pth'  
 
 ###Future improvement
 

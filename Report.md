@@ -30,15 +30,14 @@ In the beggining the Critic shall learn faster than the Actor to provide appropr
 
 Main weakness of the DDPG algorithm is that it is fragile in a sense of poor initial convergence. Also it requiers lots of hyperparameters tunning to actually achieve proper convergence.
 
-Eploration in the case of DDPG is provided by Actor's weights perturbation.
+Eploration in the case of DDPG is provided by Actor's weights perturbation. In this project higher exploration rate has been forced by adding parameter epsilon, which linearly decays to the value of zero over first 300 episodes. 
 
 
-The main idea of Proximal Policy Optimization is to use soft constraints around learning policy.
 
 ###Model architecture
 
-*Actor: Hidden(state_size, 256)-ReLU, Hidden(256, 128)-ReLU, Output(128, action_size)-TanH
-*Critic: Hidden(state_size, 256)-ReLU, Hidden(256 + action_size, 128)-ReLU, Output(128, 1)-Linear
+*Actor: Hidden(state_size, 256)-ReLU, Hidden(256, 256)-ReLU, Output(256, action_size)-TanH
+*Critic: Hidden(state_size, 256)-ReLU, Hidden(256 + action_size, 256)-ReLU, Output(256, 1)-Linear
 
 
 ###Hyperparameters
@@ -46,20 +45,23 @@ The main idea of Proximal Policy Optimization is to use soft constraints around 
 
 BUFFER_SIZE = 1e5  - size of the replay buffer  
 BATCH_SIZE = 128  - number of samples used during learning step  
-TAU = 1e-3  - local parameters to target update factor  
-LR_ACTOR = 1e-4 - learning rate of the actor 
-LR_CRITIC = 1e-4 - learning rate of the critic
+TAU = 2e-2  - local parameters to target update factor  
+LR_ACTOR = 2e-4 - learning rate of the actor 
+LR_CRITIC = 2e-4 - learning rate of the critic
 WEIGHT_DECAY = 0  - rate of weight decay
 GAMMA = 0.99 - discount factor
 
 
 ###Plot of rewards 
 
-The environment has been solved (mean score(over 100 episodes, and over all 20 agents was higher than 30) in around 105 episodes.  
-![mean score](result_plot.png)  
+The environment has been solved (mean score was higher than 0.5) in around 400 episodes.  
+![mean score](result_common_memory.png)  
 
-Actor's weights are stored in 'checkpoint_actor.pth'
-Critic's weights are stored in 'checkpoint_actor.pth'  
+First Actor's weights are stored in 'checkpoint_actor_id1.pth'
+First Critic's weights are stored in 'checkpoint_actor_id1.pth'  
+
+Second Actor's weights are stored in 'checkpoint_actor_id2.pth'
+Second Critic's weights are stored in 'checkpoint_actor_id2.pth'  
 
 ###Future improvement
 
